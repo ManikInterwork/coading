@@ -2,46 +2,90 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 public class recursion2{
-	public static void main(String[] args) {
+	   //RECURSION PROBEM 4
+	public static void main(String[] Args) {
 		Scanner scan=new Scanner(System.in);
-		System.out.println("enter the number");
-		int n=scan.nextInt();
-		
-		ArrayList<String>Path=getPaths(n);
-		System.out.println(Path);
+		System.out.println("enter the rows");
+		int r=scan.nextInt();
+		System.out.println("enter the number of column");
+		int c=scan.nextInt();
+		ArrayList<String>paths=getMazePath(1,1,r,c);
+		System.out.println(paths);
 	}
+	public static ArrayList<String>getMazePath(int sr,int sc,int dr,int dc){
+		if(sr==dr  &&  sc==dc) {
+			ArrayList<String>bres=new ArrayList<>();
+			bres.add(" ");
+			return bres;
+		}
+		ArrayList<String>hpath=new ArrayList<>();
+		ArrayList<String>vpath=new ArrayList<>();
+		
+		if(sr<dr) {
+			vpath=getMazePath(sr+1,sc,dr,dc);
+		}
+		if(sc<dc) {
+			hpath=getMazePath(sr,sc+1,dr,dc);
+		}
+		
+		ArrayList<String>Path=new ArrayList<>();
+		for(String hpaths:hpath) {
+			Path.add("h" + hpaths);
+		}
+		for(String vpaths:vpath) {
+			Path.add("v" + vpaths);
+		}
+		return Path;
 	
-	 public static ArrayList<String>getPaths(int n){
-		 if(n==0) {
-			 ArrayList<String>bres=new ArrayList<>();
-			 bres.add("");
-			 return bres;
+	}
+
+}
+	
+	
+	
+	
+	
+	//RECURSION PROBLEM 3
+// 	public static void main(String[] args) {
+// 		Scanner scan=new Scanner(System.in);
+// 		System.out.println("enter the number");
+// 		int n=scan.nextInt();
+		
+// 		ArrayList<String>Path=getPaths(n);
+// 		System.out.println(Path);
+// 	}
+	
+// 	 public static ArrayList<String>getPaths(int n){
+// 		 if(n==0) {
+// 			 ArrayList<String>bres=new ArrayList<>();
+// 			 bres.add("");
+// 			 return bres;
 			 
-		 }
-		 else if(n<0) {
-			 ArrayList<String>bres=new ArrayList<>();
-			 return bres;
-		 }
-		 ArrayList<String>Path1=getPaths(n-1);
-		 ArrayList<String>Path2=getPaths(n-2);
-		 ArrayList<String>Path3=getPaths(n-3);
+// 		 }
+// 		 else if(n<0) {
+// 			 ArrayList<String>bres=new ArrayList<>();
+// 			 return bres;
+// 		 }
+// 		 ArrayList<String>Path1=getPaths(n-1);
+// 		 ArrayList<String>Path2=getPaths(n-2);
+// 		 ArrayList<String>Path3=getPaths(n-3);
 		 
-		 ArrayList<String>yui=new ArrayList<>();
+// 		 ArrayList<String>yui=new ArrayList<>();
 		 
 
-		 for(String pathu:Path1) {
-			 yui.add(1 + pathu);
-		 }
-		 for(String pathu:Path2) {
-			 yui.add(2 + pathu);
-		 }
-		 for(String pathu:Path3) {
-			 yui.add(2 + pathu);
-		 }
-		return yui;
-	}
+// 		 for(String pathu:Path1) {
+// 			 yui.add(1 + pathu);
+// 		 }
+// 		 for(String pathu:Path2) {
+// 			 yui.add(2 + pathu);
+// 		 }
+// 		 for(String pathu:Path3) {
+// 			 yui.add(2 + pathu);
+// 		 }
+// 		return yui;
+// 	}
 	
-}
+// }
 
 // MOBILE KEYPAD EXAMPLE RECURSION PROBLEM 2
 
